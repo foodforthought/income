@@ -28,7 +28,15 @@ class ViewController: UIViewController {
 
     @IBAction func calculateIncome(_ sender: AnyObject) {
         grossIncome.resignFirstResponder()
-        netIncome.text = grossIncome.text
+
+        let grossIncomeFloat: Float = Float(grossIncome.text!)!
+        let deductionFloat: Float = Float(deduction.text!)!
+        let iraFloat: Float = Float(ira.text!)!
+        let healthcareFloat: Float = Float(healthcare.text!)!
+        
+        netIncome.text = String(grossIncomeFloat - deductionFloat - iraFloat - healthcareFloat)
+        
+        
     }
 
 }
