@@ -30,7 +30,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         self.statePicker.dataSource = self
         
         filingStatus = ["Single", "Married (joint)", "Married (separate)", "Head of household"]
-        states = ["Texas", "California", "New York", "Washington"]
+        states = ["AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "VT", "WA", "WI", "WV", "WY"]
     }
 
     override func didReceiveMemoryWarning() {
@@ -123,6 +123,10 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         }
     }
     
+    func computeStateIncomeTax(taxableIncome: Float, stateIdx: Int) -> Float {
+        return 0
+    }
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2
     }
@@ -152,9 +156,10 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         let healthcareFloat: Float = Float(healthcare.text!)!
         
         let taxableIncome: Float = grossIncomeFloat - deductionFloat - iraFloat - healthcareFloat
-        let tax: Float = computeFederalIncomeTax(taxableIncome: taxableIncome, filingStatusIdx: statePicker.selectedRow(inComponent: 0))
+        let federalIncomeTax: Float = computeFederalIncomeTax(taxableIncome: taxableIncome, filingStatusIdx: statePicker.selectedRow(inComponent: 0))
+        let stateIncomeTax: Float = computeStateIncomeTax(taxableIncome: taxableIncome, stateIdx: statePicker.selectedRow(inComponent: 1))
         
-        netIncome.text = String(taxableIncome - tax)
+        netIncome.text = String(taxableIncome - federalIncomeTax - stateIncomeTax)
     }
 
 }
