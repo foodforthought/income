@@ -39,11 +39,11 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     func computeFederalIncomeTax(taxableIncome: Float, filingStatusIdx: Int) -> Float {
-        if filingStatus[filingStatusIdx] == "Single" {
+        if filingStatusIdx == 0 {
             return computeFederalIncomeTaxForSingle(taxableIncome: taxableIncome)
-        } else if filingStatus[filingStatusIdx] == "Married (joint)" {
+        } else if filingStatusIdx == 1 {
             return computeFederalIncomeTaxForMarriedJoint(taxableIncome: taxableIncome)
-        } else if filingStatus[filingStatusIdx] == "Married (separate)" {
+        } else if filingStatusIdx == 2 {
             return computeFederalIncomeTaxForMarriedSeparate(taxableIncome: taxableIncome)
         } else {
             return computeFederalIncomeTaxForHeadOfHousehold(taxableIncome: taxableIncome)
@@ -124,7 +124,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 3
+        return 2
     }
     
     func pickerView(_: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
@@ -151,8 +151,10 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         let iraFloat: Float = Float(ira.text!)!
         let healthcareFloat: Float = Float(healthcare.text!)!
         
-        netIncome.text = String(grossIncomeFloat - deductionFloat - iraFloat - healthcareFloat)
-
+        let taxableIncome: Float = grossIncomeFloat - deductionFloat - iraFloat - healthcareFloat
+        let tax: Float = computeFederalIncomeTax(taxableIncome: taxableIncome, filingStatusIdx: statePicker.selectedRow(inComponent: 0))
+        
+        netIncome.text = String(taxableIncome - tax)
     }
 
 }
