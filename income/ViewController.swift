@@ -6,6 +6,7 @@
 //  Copyright © 2017 Mikkel C. Kim. All rights reserved.
 //
 
+import ChameleonFramework
 import UIKit
 
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
@@ -25,6 +26,9 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        let gradientColors: [UIColor] = [FlatLime(), FlatGreen()]
+        self.view.backgroundColor = GradientColor(UIGradientStyle.topToBottom, frame: self.view.frame, colors: gradientColors)
         
         self.grossIncome.delegate = self
         self.deduction.delegate = self
