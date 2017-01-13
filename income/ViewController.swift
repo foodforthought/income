@@ -8,13 +8,13 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 
     @IBOutlet weak var grossIncome: UITextField!
     @IBOutlet weak var deduction: UITextField!
     @IBOutlet weak var ira: UITextField!
     @IBOutlet weak var healthcare: UITextField!
-    @IBOutlet weak var statePicker: UIPickerView!
+    @IBOutlet weak var filingStatusAndStatePicker: UIPickerView!
     @IBOutlet weak var netIncome: UILabel!
     
     var filingStatus: [String] = [String]()
@@ -26,8 +26,13 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        self.statePicker.delegate = self
-        self.statePicker.dataSource = self
+        self.grossIncome.delegate = self
+        self.deduction.delegate = self
+        self.ira.delegate = self
+        self.healthcare.delegate = self
+        
+        self.filingStatusAndStatePicker.delegate = self
+        self.filingStatusAndStatePicker.dataSource = self
         
         filingStatus = ["Single", "Married (joint)", "Married (separate)", "Head of household"]
         states = ["AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "VT", "WA", "WI", "WV", "WY"]
@@ -36,6 +41,26 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
+    {
+        let existingTextHasDecimal = textField.text?.range(of: ".")
+        let replacementTextHasDecimal = string.range(of: ".")
+        let replacementTextAllCharacters = CharacterSet(charactersIn: string)
+        let replacementTextOnlyDigits = CharacterSet.decimalDigits.isSuperset(of: replacementTextAllCharacters)
+        
+        if replacementTextHasDecimal != nil && existingTextHasDecimal != nil {
+            return false
+        } else {
+            if replacementTextOnlyDigits == true {
+                return true
+            } else if replacementTextHasDecimal != nil {
+                return true
+            } else {
+                return false
+            }
+        }
     }
     
     func computeFederalIncomeTax(taxableIncome: Float, filingStatusIdx: Int) -> Float {
@@ -156,8 +181,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         let healthcareFloat: Float = Float(healthcare.text!)!
         
         let taxableIncome: Float = grossIncomeFloat - deductionFloat - iraFloat - healthcareFloat
-        let federalIncomeTax: Float = computeFederalIncomeTax(taxableIncome: taxableIncome, filingStatusIdx: statePicker.selectedRow(inComponent: 0))
-        let stateIncomeTax: Float = computeStateIncomeTax(taxableIncome: taxableIncome, stateIdx: statePicker.selectedRow(inComponent: 1))
+        let federalIncomeTax: Float = computeFederalIncomeTax(taxableIncome: taxableIncome, filingStatusIdx: filingStatusAndStatePicker.selectedRow(inComponent: 0))
+        let stateIncomeTax: Float = computeStateIncomeTax(taxableIncome: taxableIncome, stateIdx: filingStatusAndStatePicker.selectedRow(inComponent: 1))
         
         netIncome.text = String(taxableIncome - federalIncomeTax - stateIncomeTax)
     }
