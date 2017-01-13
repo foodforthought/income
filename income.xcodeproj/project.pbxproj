@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		288EBD990E02CD94D0FCC1BA /* Pods_income.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC7A223D258A7A4E6BD4BF25 /* Pods_income.framework */; };
 		766A4F441E24754D007E5420 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766A4F431E24754D007E5420 /* AppDelegate.swift */; };
 		766A4F461E24754D007E5420 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766A4F451E24754D007E5420 /* ViewController.swift */; };
 		766A4F491E24754D007E5420 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 766A4F471E24754D007E5420 /* Main.storyboard */; };
@@ -22,6 +23,9 @@
 		766A4F4A1E24754D007E5420 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		766A4F4D1E24754D007E5420 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		766A4F4F1E24754D007E5420 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		883709CF2B13D338D50DC14C /* Pods-income.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-income.release.xcconfig"; path = "Pods/Target Support Files/Pods-income/Pods-income.release.xcconfig"; sourceTree = "<group>"; };
+		DC7A223D258A7A4E6BD4BF25 /* Pods_income.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_income.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7224879308F391B41DDF135 /* Pods-income.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-income.debug.xcconfig"; path = "Pods/Target Support Files/Pods-income/Pods-income.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +33,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				288EBD990E02CD94D0FCC1BA /* Pods_income.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		596ECADE434107C2C356B971 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DC7A223D258A7A4E6BD4BF25 /* Pods_income.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		766A4F371E24754D007E5420 = {
 			isa = PBXGroup;
 			children = (
 				766A4F421E24754D007E5420 /* income */,
 				766A4F411E24754D007E5420 /* Products */,
+				81DD33A918765897DE4BBE61 /* Pods */,
+				596ECADE434107C2C356B971 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +79,15 @@
 			path = income;
 			sourceTree = "<group>";
 		};
+		81DD33A918765897DE4BBE61 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F7224879308F391B41DDF135 /* Pods-income.debug.xcconfig */,
+				883709CF2B13D338D50DC14C /* Pods-income.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 766A4F521E24754D007E5420 /* Build configuration list for PBXNativeTarget "income" */;
 			buildPhases = (
+				135BD02796E2D33A9ADC0290 /* [CP] Check Pods Manifest.lock */,
 				766A4F3C1E24754D007E5420 /* Sources */,
 				766A4F3D1E24754D007E5420 /* Frameworks */,
 				766A4F3E1E24754D007E5420 /* Resources */,
+				71F57528E4EF94EA03D0B779 /* [CP] Embed Pods Frameworks */,
+				E50A6E135DEA11F94AC20976 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -130,6 +157,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		135BD02796E2D33A9ADC0290 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		71F57528E4EF94EA03D0B779 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-income/Pods-income-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E50A6E135DEA11F94AC20976 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-income/Pods-income-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		766A4F3C1E24754D007E5420 /* Sources */ = {
@@ -258,6 +333,7 @@
 		};
 		766A4F531E24754D007E5420 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F7224879308F391B41DDF135 /* Pods-income.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = income/Info.plist;
@@ -270,6 +346,7 @@
 		};
 		766A4F541E24754D007E5420 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 883709CF2B13D338D50DC14C /* Pods-income.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = income/Info.plist;
