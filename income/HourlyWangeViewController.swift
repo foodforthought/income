@@ -1,17 +1,19 @@
 //
-//  ViewController.swift
-//  CalculateIncome
+//  HourlyWangeViewController.swift
+//  income
 //
-//  Created by Mikkel C. Kim on 1/9/17.
-//  Copyright © 2017 Mikkel C. Kim. All rights reserved.
+//  Created by Hyunchel Kim on 1/12/17.
+//  Copyright © 2017 foodforthought. All rights reserved.
 //
 
+import Foundation
 import ChameleonFramework
 import UIKit
 
-class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
-
-    @IBOutlet weak var grossIncome: UITextField!
+class HourlyWageViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
+    
+    @IBOutlet weak var hourlyWage: UITextField!
+    @IBOutlet weak var numberOfHoursPerWeek: UITextField!
     @IBOutlet weak var deduction: UITextField!
     @IBOutlet weak var ira: UITextField!
     @IBOutlet weak var healthcare: UITextField!
@@ -30,7 +32,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         let gradientColors: [UIColor] = [FlatLime(), FlatGreen()]
         self.view.backgroundColor = GradientColor(UIGradientStyle.topToBottom, frame: self.view.frame, colors: gradientColors)
         
-        self.grossIncome.delegate = self
+        self.hourlyWage.delegate = self
         self.deduction.delegate = self
         self.ira.delegate = self
         self.healthcare.delegate = self
@@ -41,7 +43,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         filingStatus = ["Single", "Married (joint)", "Married (separate)", "Head of household"]
         states = ["AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "VT", "WA", "WI", "WV", "WY"]
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -175,21 +177,24 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             return states[row]
         }
     }
-
+    
     @IBAction func calculateIncome(_ sender: AnyObject) {
-        grossIncome.resignFirstResponder()
-
-        let grossIncomeFloat: Float = Float(grossIncome.text!)!
+        hourlyWage.resignFirstResponder()
+        
+        let hourlyWageFloat: Float = Float(hourlyWage.text!)!
+        let numberOfHoursPerWeekFloat: Float = Float(numberOfHoursPerWeek.text!)!
         let deductionFloat: Float = Float(deduction.text!)!
         let iraFloat: Float = Float(ira.text!)!
         let healthcareFloat: Float = Float(healthcare.text!)!
         
-        let taxableIncome: Float = grossIncomeFloat - deductionFloat - iraFloat - healthcareFloat
+        let grossIncome: Float = hourlyWageFloat * numberOfHoursPerWeekFloat * 52
+        
+        let taxableIncome: Float = grossIncome - deductionFloat - iraFloat - healthcareFloat
         let federalIncomeTax: Float = computeFederalIncomeTax(taxableIncome: taxableIncome, filingStatusIdx: filingStatusAndStatePicker.selectedRow(inComponent: 0))
         let stateIncomeTax: Float = computeStateIncomeTax(taxableIncome: taxableIncome, stateIdx: filingStatusAndStatePicker.selectedRow(inComponent: 1))
         
         netIncome.text = String(taxableIncome - federalIncomeTax - stateIncomeTax)
     }
-
+    
 }
 

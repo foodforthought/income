@@ -9,21 +9,23 @@
 /* Begin PBXBuildFile section */
 		288EBD990E02CD94D0FCC1BA /* Pods_income.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC7A223D258A7A4E6BD4BF25 /* Pods_income.framework */; };
 		766A4F441E24754D007E5420 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766A4F431E24754D007E5420 /* AppDelegate.swift */; };
-		766A4F461E24754D007E5420 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766A4F451E24754D007E5420 /* ViewController.swift */; };
+		766A4F461E24754D007E5420 /* SalaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766A4F451E24754D007E5420 /* SalaryViewController.swift */; };
 		766A4F491E24754D007E5420 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 766A4F471E24754D007E5420 /* Main.storyboard */; };
 		766A4F4B1E24754D007E5420 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 766A4F4A1E24754D007E5420 /* Assets.xcassets */; };
 		766A4F4E1E24754D007E5420 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 766A4F4C1E24754D007E5420 /* LaunchScreen.storyboard */; };
+		9E479DA81E28682800118859 /* HourlyWangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E479DA71E28682800118859 /* HourlyWangeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		766A4F401E24754D007E5420 /* income.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = income.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		766A4F431E24754D007E5420 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		766A4F451E24754D007E5420 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		766A4F451E24754D007E5420 /* SalaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalaryViewController.swift; sourceTree = "<group>"; };
 		766A4F481E24754D007E5420 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		766A4F4A1E24754D007E5420 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		766A4F4D1E24754D007E5420 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		766A4F4F1E24754D007E5420 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		883709CF2B13D338D50DC14C /* Pods-income.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-income.release.xcconfig"; path = "Pods/Target Support Files/Pods-income/Pods-income.release.xcconfig"; sourceTree = "<group>"; };
+		9E479DA71E28682800118859 /* HourlyWangeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HourlyWangeViewController.swift; sourceTree = "<group>"; };
 		DC7A223D258A7A4E6BD4BF25 /* Pods_income.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_income.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7224879308F391B41DDF135 /* Pods-income.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-income.debug.xcconfig"; path = "Pods/Target Support Files/Pods-income/Pods-income.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,11 +72,12 @@
 			isa = PBXGroup;
 			children = (
 				766A4F431E24754D007E5420 /* AppDelegate.swift */,
-				766A4F451E24754D007E5420 /* ViewController.swift */,
+				766A4F451E24754D007E5420 /* SalaryViewController.swift */,
 				766A4F471E24754D007E5420 /* Main.storyboard */,
 				766A4F4A1E24754D007E5420 /* Assets.xcassets */,
 				766A4F4C1E24754D007E5420 /* LaunchScreen.storyboard */,
 				766A4F4F1E24754D007E5420 /* Info.plist */,
+				9E479DA71E28682800118859 /* HourlyWangeViewController.swift */,
 			);
 			path = income;
 			sourceTree = "<group>";
@@ -211,7 +214,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				766A4F461E24754D007E5420 /* ViewController.swift in Sources */,
+				9E479DA81E28682800118859 /* HourlyWangeViewController.swift in Sources */,
+				766A4F461E24754D007E5420 /* SalaryViewController.swift in Sources */,
 				766A4F441E24754D007E5420 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -376,6 +380,7 @@
 				766A4F541E24754D007E5420 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
