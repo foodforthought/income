@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="qZj-F5-bRJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="qZj-F5-bRJ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -115,7 +115,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Hourly Wage" id="0sO-N6-arw"/>
+                    <tabBarItem key="tabBarItem" title="Hourly Wage" id="0sO-N6-arw">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-12"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="deduction" destination="Efe-HZ-fzk" id="g1w-5P-9iU"/>
                         <outlet property="filingStatusAndStatePicker" destination="lHG-bG-m2j" id="OPX-wZ-UOc"/>
@@ -238,7 +240,9 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Salary" id="jaD-cj-Gx9"/>
+                    <tabBarItem key="tabBarItem" title="Salary" id="jaD-cj-Gx9">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-12"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="deduction" destination="pKr-SA-pJq" id="kve-bi-HlX"/>
                         <outlet property="filingStatusAndStatePicker" destination="5W2-vn-Scf" id="fV5-Rg-wfd"/>
