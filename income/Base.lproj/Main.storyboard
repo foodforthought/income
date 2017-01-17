@@ -38,28 +38,28 @@
                                     <action selector="calculateIncome:" destination="fIY-36-ThT" eventType="touchUpInside" id="HzE-UI-GsM"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="hours" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y2v-uN-nEc">
+                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="hours" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y2v-uN-nEc">
                                 <rect key="frame" x="43" y="119" width="289" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="$" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Efe-HZ-fzk">
+                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="$" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Efe-HZ-fzk">
                                 <rect key="frame" x="43" y="184" width="289" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="$" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s79-aC-Lg4">
+                            <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="$" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s79-aC-Lg4">
                                 <rect key="frame" x="43" y="248" width="289" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="$" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qAm-ce-V2U">
+                            <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="$" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qAm-ce-V2U">
                                 <rect key="frame" x="43" y="318" width="289" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
@@ -149,12 +149,17 @@
                     </tabBarItem>
                     <connections>
                         <outlet property="deduction" destination="Efe-HZ-fzk" id="g1w-5P-9iU"/>
+                        <outlet property="deductionLabel" destination="EoU-JA-zBA" id="ElU-Uy-4Ag"/>
                         <outlet property="filingStatusPicker" destination="lHG-bG-m2j" id="PJe-bl-4a9"/>
                         <outlet property="healthcare" destination="qAm-ce-V2U" id="1QJ-Sr-ipA"/>
+                        <outlet property="healthcareLabel" destination="iib-dL-Ueq" id="DOM-Ja-tMY"/>
                         <outlet property="hourlyWage" destination="qrM-fj-aJZ" id="CkL-oY-y3I"/>
+                        <outlet property="hourlyWageLabel" destination="naT-UJ-C4C" id="HkR-RV-xHL"/>
                         <outlet property="ira" destination="s79-aC-Lg4" id="g2w-f2-VYk"/>
+                        <outlet property="iraLabel" destination="sHo-mX-2SI" id="lmw-wo-OaR"/>
                         <outlet property="netIncome" destination="Ce8-X6-gdV" id="jZH-gd-O6h"/>
                         <outlet property="numberOfHoursPerWeek" destination="Y2v-uN-nEc" id="kMt-Gd-57v"/>
+                        <outlet property="numberOfHoursPerWeekLabel" destination="Ykc-YA-LLh" id="Xn6-M1-HAg"/>
                         <outlet property="statePicker" destination="CKw-cg-uib" id="JIc-CO-7GB"/>
                     </connections>
                 </viewController>
@@ -215,21 +220,21 @@
                                     <action selector="calculateIncome:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CGA-mK-XrD"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="$" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pKr-SA-pJq">
+                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="$" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pKr-SA-pJq">
                                 <rect key="frame" x="46" y="123" width="289" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="$" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HSc-rF-pB9">
+                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="$" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HSc-rF-pB9">
                                 <rect key="frame" x="46" y="190" width="289" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="$" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gLh-Ok-n7L">
+                            <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="$" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gLh-Ok-n7L">
                                 <rect key="frame" x="46" y="257" width="289" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
@@ -300,10 +305,14 @@
                     </tabBarItem>
                     <connections>
                         <outlet property="deduction" destination="pKr-SA-pJq" id="kve-bi-HlX"/>
+                        <outlet property="deductionLabel" destination="Mlh-6T-kkG" id="Cof-DW-ppy"/>
                         <outlet property="filingStatusPicker" destination="5W2-vn-Scf" id="QsJ-sV-XTG"/>
                         <outlet property="grossIncome" destination="IE1-RR-Yaf" id="ans-Jo-Pvu"/>
+                        <outlet property="grossIncomeLabel" destination="zwW-Bm-Tji" id="vaN-WE-SFW"/>
                         <outlet property="healthcare" destination="gLh-Ok-n7L" id="0YN-KJ-qUs"/>
+                        <outlet property="healthcareLabel" destination="c3G-Tw-uEC" id="bbn-5W-fHh"/>
                         <outlet property="ira" destination="HSc-rF-pB9" id="3E8-8H-n3K"/>
+                        <outlet property="iraLabel" destination="IL4-7d-INp" id="vgj-1i-cPT"/>
                         <outlet property="netIncome" destination="IeY-0t-azl" id="EYI-Iv-a08"/>
                         <outlet property="statePicker" destination="TiD-Sh-1VK" id="ouW-Il-p4L"/>
                     </connections>

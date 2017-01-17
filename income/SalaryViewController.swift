@@ -10,6 +10,10 @@ import ChameleonFramework
 import UIKit
 
 class SalaryViewController: IncomeViewController {
+    @IBOutlet weak var grossIncomeLabel: UILabel!
+    @IBOutlet weak var deductionLabel: UILabel!
+    @IBOutlet weak var iraLabel: UILabel!
+    @IBOutlet weak var healthcareLabel: UILabel!
 
     @IBOutlet weak var grossIncome: UITextField!
     @IBOutlet weak var deduction: UITextField!
@@ -38,6 +42,32 @@ class SalaryViewController: IncomeViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField.tag == 0 {
+            grossIncomeLabel?.textColor = FlatOrange()
+        } else if textField.tag == 1 {
+            deductionLabel?.textColor = FlatOrange()
+        } else if textField.tag == 2 {
+            iraLabel?.textColor = FlatOrange()
+        } else {
+            healthcareLabel?.textColor = FlatOrange()
+        }
+        return true
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if textField.tag == 0 {
+            grossIncomeLabel?.textColor = FlatBlack()
+        } else if textField.tag == 1 {
+            deductionLabel?.textColor = FlatBlack()
+        } else if textField.tag == 2 {
+            iraLabel?.textColor = FlatBlack()
+        } else {
+            healthcareLabel?.textColor = FlatBlack()
+        }
+        return true
     }
 
     @IBAction func calculateIncome(_ sender: AnyObject) {

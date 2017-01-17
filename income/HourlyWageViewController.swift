@@ -11,6 +11,11 @@ import ChameleonFramework
 import UIKit
 
 class HourlyWageViewController: IncomeViewController {
+    @IBOutlet weak var hourlyWageLabel: UILabel!
+    @IBOutlet weak var numberOfHoursPerWeekLabel: UILabel!
+    @IBOutlet weak var deductionLabel: UILabel!
+    @IBOutlet weak var iraLabel: UILabel!
+    @IBOutlet weak var healthcareLabel: UILabel!
     
     @IBOutlet weak var hourlyWage: UITextField!
     @IBOutlet weak var numberOfHoursPerWeek: UITextField!
@@ -26,6 +31,7 @@ class HourlyWageViewController: IncomeViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         self.hourlyWage.delegate = self
+        self.numberOfHoursPerWeek.delegate = self
         self.deduction.delegate = self
         self.ira.delegate = self
         self.healthcare.delegate = self
@@ -40,6 +46,36 @@ class HourlyWageViewController: IncomeViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField.tag == 0 {
+            hourlyWageLabel?.textColor = FlatOrange()
+        } else if textField.tag == 1 {
+            numberOfHoursPerWeekLabel?.textColor = FlatOrange()
+        } else if textField.tag == 2 {
+            deductionLabel?.textColor = FlatOrange()
+        } else if textField.tag == 3 {
+            iraLabel?.textColor = FlatOrange()
+        } else {
+            healthcareLabel?.textColor = FlatOrange()
+        }
+        return true
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if textField.tag == 0 {
+            hourlyWageLabel?.textColor = FlatBlack()
+        } else if textField.tag == 1 {
+            numberOfHoursPerWeekLabel?.textColor = FlatBlack()
+        } else if textField.tag == 2 {
+            deductionLabel?.textColor = FlatBlack()
+        } else if textField.tag == 3 {
+            iraLabel?.textColor = FlatBlack()
+        } else {
+            healthcareLabel?.textColor = FlatBlack()
+        }
+        return true
     }
     
     @IBAction func calculateIncome(_ sender: AnyObject) {
