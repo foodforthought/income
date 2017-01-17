@@ -51,7 +51,7 @@ class IncomeViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         return 1
     }
 
-    func pickerView(_: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView.tag == 0 {
             return filingStatus.count
         } else {

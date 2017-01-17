@@ -29,7 +29,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Sz-He-jLw">
-                                <rect key="frame" x="138" y="493" width="99" height="30"/>
+                                <rect key="frame" x="138" y="513" width="99" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="17"/>
                                 <state key="normal" title="calculate"/>
@@ -67,11 +67,11 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lHG-bG-m2j">
-                                <rect key="frame" x="0.0" y="366" width="375" height="99"/>
+                                <rect key="frame" x="-4" y="346" width="375" height="99"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="net income" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ce8-X6-gdV">
-                                <rect key="frame" x="49" y="531" width="283" height="62"/>
+                                <rect key="frame" x="46" y="538" width="283" height="62"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="25"/>
                                 <nil key="textColor"/>
@@ -137,6 +137,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <pickerView tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CKw-cg-uib">
+                                <rect key="frame" x="9" y="433" width="348" height="82"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -145,12 +149,13 @@
                     </tabBarItem>
                     <connections>
                         <outlet property="deduction" destination="Efe-HZ-fzk" id="g1w-5P-9iU"/>
-                        <outlet property="filingStatusAndStatePicker" destination="lHG-bG-m2j" id="OPX-wZ-UOc"/>
+                        <outlet property="filingStatusPicker" destination="lHG-bG-m2j" id="PJe-bl-4a9"/>
                         <outlet property="healthcare" destination="qAm-ce-V2U" id="1QJ-Sr-ipA"/>
                         <outlet property="hourlyWage" destination="qrM-fj-aJZ" id="CkL-oY-y3I"/>
                         <outlet property="ira" destination="s79-aC-Lg4" id="g2w-f2-VYk"/>
                         <outlet property="netIncome" destination="Ce8-X6-gdV" id="jZH-gd-O6h"/>
                         <outlet property="numberOfHoursPerWeek" destination="Y2v-uN-nEc" id="kMt-Gd-57v"/>
+                        <outlet property="statePicker" destination="CKw-cg-uib" id="JIc-CO-7GB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="peq-N1-htT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -231,10 +236,6 @@
                                 <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5W2-vn-Scf">
-                                <rect key="frame" x="0.0" y="381" width="375" height="99"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="gross income" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zwW-Bm-Tji">
                                 <rect key="frame" x="46" y="27" width="103" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -283,6 +284,14 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <pickerView tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TiD-Sh-1VK">
+                                <rect key="frame" x="189" y="332" width="163" height="99"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5W2-vn-Scf">
+                                <rect key="frame" x="29" y="332" width="158" height="99"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -291,11 +300,12 @@
                     </tabBarItem>
                     <connections>
                         <outlet property="deduction" destination="pKr-SA-pJq" id="kve-bi-HlX"/>
-                        <outlet property="filingStatusAndStatePicker" destination="5W2-vn-Scf" id="fV5-Rg-wfd"/>
+                        <outlet property="filingStatusPicker" destination="5W2-vn-Scf" id="QsJ-sV-XTG"/>
                         <outlet property="grossIncome" destination="IE1-RR-Yaf" id="ans-Jo-Pvu"/>
                         <outlet property="healthcare" destination="gLh-Ok-n7L" id="0YN-KJ-qUs"/>
                         <outlet property="ira" destination="HSc-rF-pB9" id="3E8-8H-n3K"/>
                         <outlet property="netIncome" destination="IeY-0t-azl" id="EYI-Iv-a08"/>
+                        <outlet property="statePicker" destination="TiD-Sh-1VK" id="ouW-Il-p4L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

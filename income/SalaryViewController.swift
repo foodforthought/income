@@ -15,7 +15,8 @@ class SalaryViewController: IncomeViewController {
     @IBOutlet weak var deduction: UITextField!
     @IBOutlet weak var ira: UITextField!
     @IBOutlet weak var healthcare: UITextField!
-    @IBOutlet weak var filingStatusAndStatePicker: UIPickerView!
+    @IBOutlet weak var filingStatusPicker: UIPickerView!
+    @IBOutlet weak var statePicker: UIPickerView!
     @IBOutlet weak var netIncome: UILabel!
     
     override func viewDidLoad() {
@@ -27,8 +28,11 @@ class SalaryViewController: IncomeViewController {
         self.ira.delegate = self
         self.healthcare.delegate = self
         
-        self.filingStatusAndStatePicker.delegate = self
-        self.filingStatusAndStatePicker.dataSource = self
+        self.filingStatusPicker.delegate = self
+        self.filingStatusPicker.dataSource = self
+        
+        self.statePicker.delegate = self
+        self.statePicker.dataSource = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,8 +49,8 @@ class SalaryViewController: IncomeViewController {
         let healthcareFloat: Float = Float(healthcare.text!)!
         
         let taxableIncome: Float = grossIncomeFloat - deductionFloat - iraFloat - healthcareFloat
-        let federalIncomeTax: Float = computeFederalIncomeTax(taxableIncome: taxableIncome, filingStatusIdx: filingStatusAndStatePicker.selectedRow(inComponent: 0))
-        let stateIncomeTax: Float = computeStateIncomeTax(taxableIncome: taxableIncome, stateIdx: filingStatusAndStatePicker.selectedRow(inComponent: 1))
+        let federalIncomeTax: Float = computeFederalIncomeTax(taxableIncome: taxableIncome, filingStatusIdx: filingStatusPicker.selectedRow(inComponent: 0))
+        let stateIncomeTax: Float = computeStateIncomeTax(taxableIncome: taxableIncome, stateIdx: statePicker.selectedRow(inComponent: 0))
         
         netIncome.text = String(taxableIncome - federalIncomeTax - stateIncomeTax)
     }
