@@ -81,6 +81,22 @@ class HourlyWageViewController: IncomeViewController {
     @IBAction func calculateIncome(_ sender: AnyObject) {
         hourlyWage.resignFirstResponder()
         
+        if hourlyWage.text!.isEmpty {
+            hourlyWage.text! = "0"
+        }
+        if numberOfHoursPerWeek.text!.isEmpty {
+            numberOfHoursPerWeek.text! = "0"
+        }
+        if deduction.text!.isEmpty {
+            deduction.text! = "0"
+        }
+        if ira.text!.isEmpty {
+            ira.text! = "0"
+        }
+        if healthcare.text!.isEmpty {
+            healthcare.text! = "0"
+        }
+        
         let hourlyWageFloat: Float = Float(hourlyWage.text!)!
         let numberOfHoursPerWeekFloat: Float = Float(numberOfHoursPerWeek.text!)!
         let deductionFloat: Float = Float(deduction.text!)!
