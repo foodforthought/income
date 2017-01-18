@@ -16,6 +16,8 @@ class HourlyWageViewController: IncomeViewController {
     @IBOutlet weak var deductionLabel: UILabel!
     @IBOutlet weak var iraLabel: UILabel!
     @IBOutlet weak var healthcareLabel: UILabel!
+    @IBOutlet weak var filingStatusLabel: UILabel!
+    @IBOutlet weak var stateLabel: UILabel!
     
     @IBOutlet weak var hourlyWage: UITextField!
     @IBOutlet weak var numberOfHoursPerWeek: UITextField!
@@ -25,6 +27,8 @@ class HourlyWageViewController: IncomeViewController {
     @IBOutlet weak var filingStatusPicker: UIPickerView!
     @IBOutlet weak var statePicker: UIPickerView!
     @IBOutlet weak var netIncome: UILabel!
+    @IBOutlet weak var filingStatusTextField: UITextField!
+    @IBOutlet weak var stateTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +39,8 @@ class HourlyWageViewController: IncomeViewController {
         self.deduction.delegate = self
         self.ira.delegate = self
         self.healthcare.delegate = self
+        self.filingStatusTextField.delegate = self
+        self.stateTextField.delegate = self
         
         self.filingStatusPicker.delegate = self
         self.filingStatusPicker.dataSource = self
@@ -59,8 +65,14 @@ class HourlyWageViewController: IncomeViewController {
             deductionLabel?.textColor = FlatOrange()
         } else if textField.tag == 3 {
             iraLabel?.textColor = FlatOrange()
-        } else {
+        } else if textField.tag == 4 {
             healthcareLabel?.textColor = FlatOrange()
+        } else if textField.tag == 5 {
+            filingStatusLabel?.textColor = FlatOrange()
+            setView(view: filingStatusPicker, hidden: false)
+        } else if textField.tag == 6 {
+            stateLabel?.textColor = FlatOrange()
+            setView(view: statePicker, hidden: false)
         }
         return true
     }
@@ -74,10 +86,26 @@ class HourlyWageViewController: IncomeViewController {
             deductionLabel?.textColor = FlatBlack()
         } else if textField.tag == 3 {
             iraLabel?.textColor = FlatBlack()
-        } else {
+        } else if textField.tag == 4 {
             healthcareLabel?.textColor = FlatBlack()
+        } else if textField.tag == 5 {
+            filingStatusLabel?.textColor = FlatBlack()
+            setView(view: filingStatusPicker, hidden: true)
+        } else if textField.tag == 6 {
+            stateLabel?.textColor = FlatBlack()
+            setView(view: statePicker, hidden: true)
         }
         return true
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerView.tag == 0 {
+            filingStatusTextField?.text = filingStatus[row]
+            setView(view: filingStatusPicker, hidden: true)
+        } else {
+            stateTextField?.text = states[row]
+            setView(view: statePicker, hidden: true)
+        }
     }
     
     @IBAction func calculateIncome(_ sender: AnyObject) {
@@ -86,6 +114,8 @@ class HourlyWageViewController: IncomeViewController {
         deduction.resignFirstResponder()
         ira.resignFirstResponder()
         healthcare.resignFirstResponder()
+        filingStatusTextField.resignFirstResponder()
+        stateTextField.resignFirstResponder()
         
         if hourlyWage.text!.isEmpty {
             hourlyWage.text! = "0"
@@ -101,6 +131,12 @@ class HourlyWageViewController: IncomeViewController {
         }
         if healthcare.text!.isEmpty {
             healthcare.text! = "0"
+        }
+        if filingStatusTextField.text!.isEmpty {
+            filingStatusTextField.text! = filingStatus[filingStatusPicker.selectedRow(inComponent: 0)]
+        }
+        if stateTextField.text!.isEmpty {
+            stateTextField.text! = states[statePicker.selectedRow(inComponent: 0)]
         }
         
         let hourlyWageFloat: Float = Float(hourlyWage.text!)!
