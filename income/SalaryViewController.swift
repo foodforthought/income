@@ -15,8 +15,10 @@ class SalaryViewController: IncomeViewController {
     @IBOutlet weak var iraLabel: UILabel!
     @IBOutlet weak var healthcareLabel: UILabel!
     @IBOutlet weak var filingStatusLabel: UILabel!
+    @IBOutlet weak var stateLabel: UILabel!
 
     @IBOutlet weak var filingStatusTextField: UITextField!
+    @IBOutlet weak var stateTextField: UITextField!
     @IBOutlet weak var grossIncome: UITextField!
     @IBOutlet weak var deduction: UITextField!
     @IBOutlet weak var ira: UITextField!
@@ -34,6 +36,7 @@ class SalaryViewController: IncomeViewController {
         self.ira.delegate = self
         self.healthcare.delegate = self
         self.filingStatusTextField.delegate = self
+        self.stateTextField.delegate = self
         
         self.filingStatusPicker.delegate = self
         self.filingStatusPicker.dataSource = self
@@ -61,6 +64,9 @@ class SalaryViewController: IncomeViewController {
         } else if textField.tag == 4 {
             filingStatusLabel?.textColor = FlatOrange()
             setView(view: filingStatusPicker, hidden: false)
+        } else if textField.tag == 5 {
+            stateLabel?.textColor = FlatOrange()
+            setView(view: statePicker, hidden: false)
         }
         return true
     }
@@ -77,6 +83,9 @@ class SalaryViewController: IncomeViewController {
         } else if textField.tag == 4 {
             filingStatusLabel?.textColor = FlatBlack()
             setView(view: filingStatusPicker, hidden: true)
+        } else if textField.tag == 5 {
+            stateLabel?.textColor = FlatBlack()
+            setView(view: statePicker, hidden: true)
         }
         return true
     }
@@ -86,7 +95,8 @@ class SalaryViewController: IncomeViewController {
             filingStatusTextField!.text = self.filingStatus[row]
             setView(view: pickerView, hidden: true)
         } else {
-            
+            stateTextField!.text = self.states[row]
+            setView(view: pickerView, hidden: true)
         }
     }
 
@@ -96,6 +106,7 @@ class SalaryViewController: IncomeViewController {
         ira.resignFirstResponder()
         healthcare.resignFirstResponder()
         filingStatusTextField.resignFirstResponder()
+        stateTextField.resignFirstResponder()
         
         if grossIncome.text!.isEmpty {
             grossIncome.text! = "0"
@@ -108,6 +119,12 @@ class SalaryViewController: IncomeViewController {
         }
         if healthcare.text!.isEmpty {
             healthcare.text! = "0"
+        }
+        if filingStatusTextField.text!.isEmpty {
+            filingStatusTextField.text! = filingStatus[filingStatusPicker.selectedRow(inComponent: 0)]
+        }
+        if stateTextField.text!.isEmpty {
+            stateTextField.text! = states[statePicker.selectedRow(inComponent: 0)]
         }
 
         let grossIncomeFloat: Float = Float(grossIncome.text!)!
