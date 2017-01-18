@@ -80,6 +80,10 @@ class HourlyWageViewController: IncomeViewController {
     
     @IBAction func calculateIncome(_ sender: AnyObject) {
         hourlyWage.resignFirstResponder()
+        numberOfHoursPerWeek.resignFirstResponder()
+        deduction.resignFirstResponder()
+        ira.resignFirstResponder()
+        healthcare.resignFirstResponder()
         
         if hourlyWage.text!.isEmpty {
             hourlyWage.text! = "0"

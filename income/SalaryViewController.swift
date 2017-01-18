@@ -71,6 +71,11 @@ class SalaryViewController: IncomeViewController {
     }
 
     @IBAction func calculateIncome(_ sender: AnyObject) {
+        grossIncome.resignFirstResponder()
+        deduction.resignFirstResponder()
+        ira.resignFirstResponder()
+        healthcare.resignFirstResponder()
+        
         if grossIncome.text!.isEmpty {
             grossIncome.text! = "0"
         }
