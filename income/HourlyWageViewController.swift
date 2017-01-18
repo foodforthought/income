@@ -38,9 +38,11 @@ class HourlyWageViewController: IncomeViewController {
         
         self.filingStatusPicker.delegate = self
         self.filingStatusPicker.dataSource = self
+        self.filingStatusPicker.isHidden = true
         
         self.statePicker.delegate = self
         self.statePicker.dataSource = self
+        self.statePicker.isHidden = true
     }
     
     override func didReceiveMemoryWarning() {

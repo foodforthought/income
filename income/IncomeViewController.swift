@@ -66,4 +66,10 @@ class IncomeViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
             return states[row]
         }
     }
+    
+    func setView(view: UIView, hidden: Bool) {
+        UIView.transition(with: view, duration: 0.5, options: UIViewAnimationOptions.transitionCrossDissolve, animations: {() -> Void in
+            view.isHidden = hidden
+        }, completion: { _ in })
+    }
 }

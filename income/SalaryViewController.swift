@@ -14,7 +14,9 @@ class SalaryViewController: IncomeViewController {
     @IBOutlet weak var deductionLabel: UILabel!
     @IBOutlet weak var iraLabel: UILabel!
     @IBOutlet weak var healthcareLabel: UILabel!
+    @IBOutlet weak var filingStatusLabel: UILabel!
 
+    @IBOutlet weak var filingStatusTextField: UITextField!
     @IBOutlet weak var grossIncome: UITextField!
     @IBOutlet weak var deduction: UITextField!
     @IBOutlet weak var ira: UITextField!
@@ -31,12 +33,15 @@ class SalaryViewController: IncomeViewController {
         self.deduction.delegate = self
         self.ira.delegate = self
         self.healthcare.delegate = self
+        self.filingStatusTextField.delegate = self
         
         self.filingStatusPicker.delegate = self
         self.filingStatusPicker.dataSource = self
+        self.filingStatusPicker.isHidden = true
         
         self.statePicker.delegate = self
         self.statePicker.dataSource = self
+        self.statePicker.isHidden = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,8 +56,11 @@ class SalaryViewController: IncomeViewController {
             deductionLabel?.textColor = FlatOrange()
         } else if textField.tag == 2 {
             iraLabel?.textColor = FlatOrange()
-        } else {
+        } else if textField.tag == 3 {
             healthcareLabel?.textColor = FlatOrange()
+        } else if textField.tag == 4 {
+            filingStatusLabel?.textColor = FlatOrange()
+            setView(view: filingStatusPicker, hidden: false)
         }
         return true
     }
@@ -64,10 +72,22 @@ class SalaryViewController: IncomeViewController {
             deductionLabel?.textColor = FlatBlack()
         } else if textField.tag == 2 {
             iraLabel?.textColor = FlatBlack()
-        } else {
+        } else if textField.tag == 3 {
             healthcareLabel?.textColor = FlatBlack()
+        } else if textField.tag == 4 {
+            filingStatusLabel?.textColor = FlatBlack()
+            setView(view: filingStatusPicker, hidden: true)
         }
         return true
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerView.tag == 0 {
+            filingStatusTextField!.text = self.filingStatus[row]
+            setView(view: pickerView, hidden: true)
+        } else {
+            
+        }
     }
 
     @IBAction func calculateIncome(_ sender: AnyObject) {
@@ -75,6 +95,7 @@ class SalaryViewController: IncomeViewController {
         deduction.resignFirstResponder()
         ira.resignFirstResponder()
         healthcare.resignFirstResponder()
+        filingStatusTextField.resignFirstResponder()
         
         if grossIncome.text!.isEmpty {
             grossIncome.text! = "0"
