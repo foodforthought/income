@@ -67,6 +67,19 @@ class IncomeViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         }
     }
     
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let pickerLabel = UILabel()
+        pickerLabel.textColor = FlatBlack()
+        if pickerView.tag == 0 {
+            pickerLabel.text = filingStatus[row]
+        } else {
+            pickerLabel.text = states[row]
+        }
+        pickerLabel.font = UIFont(name: "Chalkboard SE", size: 25)
+        pickerLabel.textAlignment = NSTextAlignment.center
+        return pickerLabel
+    }
+    
     func setView(view: UIView, hidden: Bool) {
         UIView.transition(with: view, duration: 0.5, options: UIViewAnimationOptions.transitionCrossDissolve, animations: {() -> Void in
             view.isHidden = hidden
