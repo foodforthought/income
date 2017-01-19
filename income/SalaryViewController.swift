@@ -64,9 +64,19 @@ class SalaryViewController: IncomeViewController {
         } else if textField.tag == 4 {
             filingStatusLabel?.textColor = FlatOrange()
             setView(view: filingStatusPicker, hidden: false)
+            for subview in self.view.subviews {
+                if !subview.isEqual(filingStatusPicker) && !subview.isEqual(statePicker) {
+                    setView(view: subview, hidden: true)
+                }
+            }
         } else if textField.tag == 5 {
             stateLabel?.textColor = FlatOrange()
             setView(view: statePicker, hidden: false)
+            for subview in self.view.subviews {
+                if !subview.isEqual(statePicker) && !subview.isEqual(filingStatusPicker) {
+                    setView(view: subview, hidden: true)
+                }
+            }
         }
         return true
     }
@@ -94,9 +104,20 @@ class SalaryViewController: IncomeViewController {
         if pickerView.tag == 0 {
             filingStatusTextField!.text = self.filingStatus[row]
             setView(view: pickerView, hidden: true)
+            for subview in self.view.subviews {
+                if !subview.isEqual(filingStatusPicker) && !subview.isEqual(statePicker) {
+                    setView(view: subview, hidden: false)
+                }
+            }
         } else {
             stateTextField!.text = self.states[row]
             setView(view: pickerView, hidden: true)
+            for subview in self.view.subviews {
+                if !subview.isEqual(statePicker) && !subview.isEqual(filingStatusPicker) {
+                    setView(view: subview, hidden: false)
+                }
+            }
+            
         }
     }
 
