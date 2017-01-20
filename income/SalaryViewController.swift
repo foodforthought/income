@@ -159,5 +159,4 @@ class SalaryViewController: IncomeViewController {
         
         netIncome.text = String(taxableIncome - federalIncomeTax - stateIncomeTax)
     }
-
 }

@@ -69,7 +69,7 @@ class IncomeViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
             return states[row]
         }
     }
-    
+
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let pickerLabel = UILabel()
         pickerLabel.textColor = FlatBlack()
