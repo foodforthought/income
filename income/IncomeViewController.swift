@@ -19,11 +19,15 @@ class IncomeViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        /*
         let gradientColors: [UIColor] = [FlatLime(), FlatGreen()]
-        self.view.backgroundColor = GradientColor(UIGradientStyle.topToBottom, frame: self.view.frame, colors: gradientColors)
+        self.view.backgroundColor = GradientColor(UIGradientStyle.topToBottom, frame: self.view.frame, colors: gradientColors) */
         
         filingStatus = ["Single", "Married (joint)", "Married (separate)", "Head of household"]
-        states = ["AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "VT", "WA", "WI", "WV", "WY"]
+        states = ["TX"]
+        
+        /*
+        states = ["AK", "AL", "AR", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "VT", "WA", "WI", "WV", "WY"] */
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
@@ -47,11 +51,11 @@ class IncomeViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 2
+        return 1
     }
 
-    func pickerView(_: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
-        if component == 0 {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if pickerView.tag == 0 {
             return filingStatus.count
         } else {
             return states.count
@@ -59,10 +63,29 @@ class IncomeViewController: UIViewController, UITextFieldDelegate, UIPickerViewD
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if component == 0 {
+        if pickerView.tag == 0 {
             return filingStatus[row]
         } else {
             return states[row]
         }
+    }
+
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let pickerLabel = UILabel()
+        pickerLabel.textColor = FlatBlack()
+        if pickerView.tag == 0 {
+            pickerLabel.text = filingStatus[row]
+        } else {
+            pickerLabel.text = states[row]
+        }
+        pickerLabel.font = UIFont(name: "Chalkboard SE", size: 25)
+        pickerLabel.textAlignment = NSTextAlignment.center
+        return pickerLabel
+    }
+    
+    func setView(view: UIView, hidden: Bool) {
+        UIView.transition(with: view, duration: 0.5, options: UIViewAnimationOptions.transitionCrossDissolve, animations: {() -> Void in
+            view.isHidden = hidden
+        }, completion: { _ in })
     }
 }
